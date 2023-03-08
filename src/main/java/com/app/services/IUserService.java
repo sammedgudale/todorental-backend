@@ -3,6 +3,7 @@ package com.app.services;
 import com.app.pojos.User;
 
 public interface IUserService {
-	User loginRequest(String email, String password);
+	User loginRequest(String email,String password);
+	User registerationForm(User  user);
 
 }

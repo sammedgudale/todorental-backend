@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.app.dto.LoginRequest;
 import com.app.dto.ResponseDTO;
+import com.app.pojos.User;
 import com.app.services.IUserService;
 
 @RestController
@@ -32,4 +33,12 @@ public class UserController {
 		return new ResponseDTO<>(HttpStatus.OK, "login done succssfully",
 				userService.loginRequest(request.getEmail(), request.getPassword()));
 	}
+	
+    @PostMapping("/register")
+    public ResponseDTO<?> register(@RequestBody User user)
+    {
+   	
+			return new ResponseDTO<>(HttpStatus.OK,"registeration done successfully",userService.registerationForm(user));
+		
+    }
 }

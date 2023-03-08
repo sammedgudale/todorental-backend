@@ -21,6 +21,12 @@ public class UserServiceImpl implements IUserService {
 		return userRepo.Login(email, password)
 				.orElseThrow(() -> new CustomerHandlingException("Invalid Credentials!!!!"));
 	}
+
+	@Override
+	public User registerationForm(User user){
+		System.out.println("user info"+user);
+		  return  userRepo.save(user);		
+	}
 	
 
 }
