@@ -10,7 +10,6 @@ import com.app.dto.FacilityDetailsDTO;
 import com.app.dto.OwnerDetailsDTO;
 import com.app.dto.PropertyDetailsDTO;
 import com.app.pojos.PropertyDetails;
-//"select a from BankAccount a join fetch a.acctOwner where a.acctOwner.customerId =:id")
 public interface PropertyRepository extends JpaRepository<PropertyDetails, Long>{
 	@Query("select p from PropertyDetails p")
 	     List<PropertyDetailsDTO> getAllPropertList();
