@@ -18,10 +18,10 @@ import com.app.services.IUserService;
 @CrossOrigin
 
 public class UserController {
+	
 	@Autowired
 	private IUserService userService;
 
-	@Autowired
 	public UserController()
 	{
 		System.out.println("in ctor of "+getClass().getName());

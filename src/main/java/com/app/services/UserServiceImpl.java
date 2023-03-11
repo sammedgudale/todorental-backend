@@ -25,7 +25,7 @@ public class UserServiceImpl implements IUserService {
 	@Override
 	public User registerationForm(User user){
 		System.out.println("user info"+user);
-		  return  userRepo.save(user);		
+		  return  userRepo.save(user);	
 	}
 	
 

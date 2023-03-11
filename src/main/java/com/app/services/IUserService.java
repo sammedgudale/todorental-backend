@@ -4,6 +4,8 @@ import com.app.pojos.User;
 
 public interface IUserService {
 	User loginRequest(String email,String password);
-	User registerationForm(User  user);
+	User registerationForm(User user);
+	
+
 
 }
