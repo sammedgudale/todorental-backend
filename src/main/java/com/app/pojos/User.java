@@ -1,11 +1,18 @@
 package com.app.pojos;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.Data;
 
@@ -33,6 +40,11 @@ public class User extends BaseEntity{
 	@Enumerated(EnumType.STRING)
 	@Column(length = 30)
 	private Role role;
+	
+	 @OneToMany(mappedBy = "ownerData",orphanRemoval = true)
+	    @JsonIgnoreProperties("ownerData")
+	    @JsonIgnore
+	     private List<PropertyDetails>prolist=new ArrayList<PropertyDetails>();
 
 	public User() {
 		super();

@@ -2,19 +2,32 @@
 
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import lombok.Data;
+
 @Entity
 @Table(name="property_details")
+@Data
 public class PropertyDetails extends BaseEntity {
 
+	
 	private String address;
 	private double rent;
 	private String status;
@@ -26,21 +39,19 @@ public class PropertyDetails extends BaseEntity {
 	private Type propertyType;
 	@Column(name="City",length=30)
 	private String city;
-//	@OneToMany(mappedBy = "photoData",cascade = CascadeType.ALL,orphanRemoval = true)
-//	  @JsonIgnoreProperties("photoData")
-//	private List<PropertyPhotos>propertyphoto=new ArrayList<>();
-//	@ManyToOne(fetch = FetchType.LAZY)
-//	@JoinColumn(name="owner_id")
-//	@JsonIgnoreProperties("prolist")
+	@OneToMany(mappedBy = "photoData",cascade = CascadeType.ALL,orphanRemoval = true)
+	  @JsonIgnoreProperties("photoData")
+	private List<PropertyPhotos>propertyphoto=new ArrayList<>();
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name="owner_id")
+	@JsonIgnoreProperties("prolist")
 	//@JsonIgnore
-//	private User ownerData;
-//	@OneToMany(mappedBy="facilityData",cascade = CascadeType.ALL,orphanRemoval = true)
-//	@JsonIgnoreProperties("facilityData")
+	private User ownerData;
+	@OneToMany(mappedBy="facilityData",cascade = CascadeType.ALL,orphanRemoval = true)
+	@JsonIgnoreProperties("facilityData")
 	//@JsonIgnore
-	//   List<Facilities>facilityList=new ArrayList<>();
-	//@OneToMany(mappedBy = "propList",cascade = CascadeType.ALL,orphanRemoval = true)
-	//@JsonIgnoreProperties("propList")
-	//  private SeekerFavList favData;
+	   List<Facilities>facilityList=new ArrayList<>();
+	
 	
 	public PropertyDetails() {
 		super();
@@ -99,7 +110,6 @@ public class PropertyDetails extends BaseEntity {
 				+ ", propertyType=" + propertyType + ", city=" + city
 				+  "]";
 	}
-	
 	
 }
 

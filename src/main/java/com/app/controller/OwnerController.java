@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.app.dto.ResponseDTO;
+import com.app.pojos.Facilities;
 import com.app.pojos.PropertyDetails;
 import com.app.services.IOwnerService;
 
@@ -19,17 +20,23 @@ import com.app.services.IOwnerService;
 public class OwnerController {
 	
 	@Autowired
-	private IOwnerService ownerService;
-	
-	public OwnerController() {
-		System.out.println("In ctor of " + getClass().getName());
+	private  IOwnerService ownerService;
+	  public OwnerController() {
+		// TODO Auto-generated constructor stub
+		   System.out.println("in ctor :-"+getClass().getName());
 	}
-	
-	@PostMapping("/property")
-	public ResponseEntity<?> addProperty(@RequestBody PropertyDetails property){
-		return new ResponseEntity<>(ownerService.addProperty(property),HttpStatus.CREATED);
-		
-	}
+       @PostMapping("/property")
+       public ResponseDTO<?>addProperty(@RequestBody PropertyDetails request)
+       {
+    	   return new ResponseDTO<>(HttpStatus.OK, "Fetching user list successfully", ownerService.addProperty(request));
+       }
+       
+       
+       @PostMapping("/addfacilities")
+       public ResponseDTO<?>addFacility(@RequestBody Facilities request)
+       {
+    	   return new ResponseDTO<>(HttpStatus.OK, "Fetching user list successfully", ownerService.addFacilities(request));
+       }
 	
 
 }

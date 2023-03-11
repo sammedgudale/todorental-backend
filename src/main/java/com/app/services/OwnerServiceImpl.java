@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.app.dao.PropertyRepository;
+import com.app.pojos.Facilities;
 import com.app.pojos.PropertyDetails;
 
 @Service
@@ -22,6 +23,12 @@ public class OwnerServiceImpl  implements IOwnerService{
 		property.setStatus("Always available");
 		
 		return propertyRepo.save(property);
+	}
+
+	@Override
+	public String addFacilities(Facilities facility) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
