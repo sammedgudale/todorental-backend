@@ -18,25 +18,23 @@ import com.app.services.IOwnerService;
 @RequestMapping("/owner")
 @CrossOrigin
 public class OwnerController {
-	
+
 	@Autowired
-	private  IOwnerService ownerService;
-	  public OwnerController() {
+	private IOwnerService ownerService;
+
+	public OwnerController() {
 		// TODO Auto-generated constructor stub
-		   System.out.println("in ctor :-"+getClass().getName());
+		System.out.println("in ctor :-" + getClass().getName());
 	}
-       @PostMapping("/property")
-       public ResponseDTO<?>addProperty(@RequestBody PropertyDetails request)
-       {
-    	   return new ResponseDTO<>(HttpStatus.OK, "Fetching user list successfully", ownerService.addProperty(request));
-       }
-       
-       
-       @PostMapping("/addfacilities")
-       public ResponseDTO<?>addFacility(@RequestBody Facilities request)
-       {
-    	   return new ResponseDTO<>(HttpStatus.OK, "Fetching user list successfully", ownerService.addFacilities(request));
-       }
-	
+
+	@PostMapping("/property")
+	public ResponseDTO<?> addProperty(@RequestBody PropertyDetails request) {
+		return new ResponseDTO<>(HttpStatus.OK, "Fetching user list successfully", ownerService.addProperty(request));
+	}
+
+	@PostMapping("/addfacilities")
+	public ResponseDTO<?> addFacility(@RequestBody Facilities request) {
+		return new ResponseDTO<>(HttpStatus.OK, "Fetching user list successfully", ownerService.addFacilities(request));
+	}
 
 }

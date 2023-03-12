@@ -13,35 +13,36 @@ import com.app.dto.ResponseDTO;
 import com.app.dto.SearchPropRequest;
 import com.app.services.ISeekerService;
 
-
 @RestController
 @RequestMapping("/seeker")
 @CrossOrigin
 public class SeekerController {
 	@Autowired
 	private ISeekerService seekerService;
-	public SeekerController()
-	{
-		System.out.println("in ctor of:-"+getClass().getName());
+
+	public SeekerController() {
+		System.out.println("in ctor of:-" + getClass().getName());
 	}
-	 @PostMapping("/contactowner")
-	 public ResponseDTO<?> getOwnerDetails(@RequestBody Long propid)
-	 {
-		 try {
-			return new ResponseDTO<> (HttpStatus.OK,"user deatils are successfully got ",seekerService.getContactDetails(propid));
+
+	@PostMapping("/contactowner")
+	public ResponseDTO<?> getOwnerDetails(@RequestBody Long propid) {
+		try {
+			return new ResponseDTO<>(HttpStatus.OK, "user deatils are successfully got ",
+					seekerService.getContactDetails(propid));
 		} catch (ResourceNotFoundException e) {
-			return new ResponseDTO<> (HttpStatus.BAD_REQUEST,"property is not in database ",null);	 
+			return new ResponseDTO<>(HttpStatus.BAD_REQUEST, "property is not in database ", null);
 		}
-		 
-	 }
-	  @PostMapping("/searchproperty")
-	 public ResponseDTO<?> searchPropertyByCity(@RequestBody SearchPropRequest request)
-	 {
-		    try {
-				return new ResponseDTO<> (HttpStatus.OK,"property details are successfully got",
-						seekerService.searchPropertyByCity(request.getCity()));
-			} catch (ResourceNotFoundException e) {
-				return new ResponseDTO<> (HttpStatus.BAD_REQUEST,"city or area is not in database and not property available for Rent",null);
-			}
-	 } 
+
+	}
+
+	@PostMapping("/searchproperty")
+	public ResponseDTO<?> searchPropertyByCity(@RequestBody SearchPropRequest request) {
+		try {
+			return new ResponseDTO<>(HttpStatus.OK, "property details are successfully got",
+					seekerService.searchPropertyByCity(request.getCity()));
+		} catch (ResourceNotFoundException e) {
+			return new ResponseDTO<>(HttpStatus.BAD_REQUEST,
+					"city or area is not in database and not property available for Rent", null);
+		}
+	}
 }

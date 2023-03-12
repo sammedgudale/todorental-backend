@@ -37,7 +37,7 @@ public class Facilities extends BaseEntity {
 
 	
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "propertyid")
+	@JoinColumn(name = "property_id")
 	@JsonIgnoreProperties("facilityList")
 	@JsonIgnore
 	private PropertyDetails facilityData;

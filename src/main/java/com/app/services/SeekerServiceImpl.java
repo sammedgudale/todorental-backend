@@ -13,6 +13,7 @@ import com.app.dao.PropertyRepository;
 import com.app.dao.UserRepository;
 import com.app.dto.OwnerDetailsDTO;
 import com.app.dto.PropertyDetailsDTO;
+
 //import com.app.dto.AreaDTO;
 @Service
 @Transactional
@@ -21,22 +22,24 @@ public class SeekerServiceImpl implements ISeekerService {
 	private UserRepository userRepo;
 	@Autowired
 	private PropertyRepository propRepo;
+
 	@Override
 	public OwnerDetailsDTO getContactDetails(Long propid) throws ResourceNotFoundException {
-		boolean exists=propRepo.existsById(propid);
-		   if(!exists)
+		boolean exists = propRepo.existsById(propid);
+		if (!exists)
 			throw new ResourceNotFoundException("property is unavailable !!!");
-		     OwnerDetailsDTO contact=propRepo.getOwnerDetails(propid);
-		       return contact;
-              
-}
+		OwnerDetailsDTO contact = propRepo.getOwnerDetails(propid);
+		return contact;
+
+	}
+
 	@Override
-	public List<PropertyDetailsDTO> searchPropertyByCity( String city) throws  ResourceNotFoundException{
-		         String name=propRepo.existsCityByName(city);
-		         boolean exists=Boolean.parseBoolean(name);
-		         if(exists)
-		         throw new ResourceNotFoundException("Invalid cityName and areaName!!!!!");
-		         return propRepo.findFlatByCity( city);
-		       
+	public List<PropertyDetailsDTO> searchPropertyByCity(String city) throws ResourceNotFoundException {
+		String name = propRepo.existsCityByName(city);
+		boolean exists = Boolean.parseBoolean(name);
+		if (exists)
+			throw new ResourceNotFoundException("Invalid cityName and areaName!!!!!");
+		return propRepo.findFlatByCity(city);
+
 	}
 }

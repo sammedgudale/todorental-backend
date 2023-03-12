@@ -1,4 +1,4 @@
-	package com.app.pojos;
+package com.app.pojos;
 
 
 import java.time.LocalDate;
@@ -31,26 +31,32 @@ public class PropertyDetails extends BaseEntity {
 	private String address;
 	private double rent;
 	private String status;
+	
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column(name="prop_add_date")
 	private LocalDate date;
+	
 	@Enumerated(EnumType.STRING)
 	@Column(name="property_type",length = 20 )
 	private Type propertyType;
+	
 	@Column(name="City",length=30)
 	private String city;
+	
 	@OneToMany(mappedBy = "photoData",cascade = CascadeType.ALL,orphanRemoval = true)
 	  @JsonIgnoreProperties("photoData")
 	private List<PropertyPhotos>propertyphoto=new ArrayList<>();
+	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="owner_id")
 	@JsonIgnoreProperties("prolist")
 	//@JsonIgnore
 	private User ownerData;
+	
 	@OneToMany(mappedBy="facilityData",cascade = CascadeType.ALL,orphanRemoval = true)
 	@JsonIgnoreProperties("facilityData")
 	//@JsonIgnore
-	   List<Facilities>facilityList=new ArrayList<>();
+	   List<Facilities> facilityList = new ArrayList<>();
 	
 	
 	public PropertyDetails() {

@@ -11,7 +11,7 @@ public interface IOwnerService {
 	PropertyDetails addProperty(PropertyDetails propData);
 	
 	@Autowired
-	String addFacilities(Facilities facility);
+	Facilities addFacilities(Facilities facility);
 	 
 
 }

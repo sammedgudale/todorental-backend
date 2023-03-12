@@ -16,17 +16,16 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.Data;
 
-
 @Entity
 @Table(name = "users")
-public class User extends BaseEntity{
+public class User extends BaseEntity {
 
 	@Column(name = "first_name", nullable = false, length = 30)
 	private String first_name;
 
 	@Column(name = "last_name", nullable = false, length = 30)
 	private String last_name;
-	
+
 	@Column(name = "email", unique = true, nullable = false, length = 30)
 	@Email
 	private String email;
@@ -40,11 +39,11 @@ public class User extends BaseEntity{
 	@Enumerated(EnumType.STRING)
 	@Column(length = 30)
 	private Role role;
-	
-	 @OneToMany(mappedBy = "ownerData",orphanRemoval = true)
-	    @JsonIgnoreProperties("ownerData")
-	    @JsonIgnore
-	     private List<PropertyDetails>prolist=new ArrayList<PropertyDetails>();
+
+	@OneToMany(mappedBy = "ownerData", orphanRemoval = true)
+	@JsonIgnoreProperties("ownerData")
+	@JsonIgnore
+	private List<PropertyDetails> prolist = new ArrayList<PropertyDetails>();
 
 	public User() {
 		super();
@@ -114,7 +113,5 @@ public class User extends BaseEntity{
 		return "User [first_name=" + first_name + ", last_name=" + last_name + ", email=" + email + ", contact_number="
 				+ contact_number + ", role=" + role + "]";
 	}
-	
-	
-}
 
+}
