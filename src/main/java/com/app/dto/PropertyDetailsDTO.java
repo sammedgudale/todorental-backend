@@ -5,7 +5,7 @@ import java.time.LocalDate;
 import com.app.pojos.Type;
 
 public interface PropertyDetailsDTO {
-	  int getId();
+	  Long getId();
 	String getAddress();
 	String getRent();
 	String getStatus();

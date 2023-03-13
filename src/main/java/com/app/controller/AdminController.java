@@ -31,7 +31,7 @@ public class AdminController {
 		return new ResponseDTO<>(HttpStatus.OK, "Fetching user list successfully", adminService.fetchAllUsers());
 	}
 	@DeleteMapping("/delete/{propId}")
-	 public ResponseDTO<?> deleteById(@PathVariable Long propId)
+	 public ResponseDTO<?> deleteById(@PathVariable Integer propId)
 	 {
 		  try {
 			 return new ResponseDTO<>(HttpStatus.OK,"Property removed succssfully",adminService.deletePropertyById(propId));

@@ -1,17 +1,12 @@
 package com.app.services;
-
-import org.springframework.beans.factory.annotation.Autowired;
-
 import com.app.pojos.Facilities;
+//import com.app.dto.SelectCityTaluqaDTO;
+//import com.app.pojos.City;
 import com.app.pojos.PropertyDetails;
-
 public interface IOwnerService {
- 
-	@Autowired
-	PropertyDetails addProperty(PropertyDetails propData);
-	
-	@Autowired
-	Facilities addFacilities(Facilities facility);
-	 
-
+         //List<SelectCityTaluqaDTO> selectCityAndTaluqa();
+		int addProperty(PropertyDetails propData);
+		
+		String addFacilities(Facilities facility);
+		 
 }

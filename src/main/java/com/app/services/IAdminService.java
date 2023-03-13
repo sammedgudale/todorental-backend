@@ -14,7 +14,7 @@ import com.app.pojos.User;
 public interface IAdminService {
 	
     List<User> fetchAllUsers();
-    String deletePropertyById(Long propId) throws ResourceNotFoundException;
+    String deletePropertyById(int propId) throws ResourceNotFoundException;
 
     
 }

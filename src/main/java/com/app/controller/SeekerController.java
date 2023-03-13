@@ -25,7 +25,7 @@ public class SeekerController {
 	}
 
 	@PostMapping("/contactowner")
-	public ResponseDTO<?> getOwnerDetails(@RequestBody Long propid) {
+	public ResponseDTO<?> getOwnerDetails(@RequestBody Integer propid) {
 		try {
 			return new ResponseDTO<>(HttpStatus.OK, "user deatils are successfully got ",
 					seekerService.getContactDetails(propid));

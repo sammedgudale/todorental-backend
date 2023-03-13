@@ -9,8 +9,8 @@ import org.springframework.transaction.annotation.Transactional;
 import com.app.custom_excs.ResourceNotFoundException;
 import com.app.dao.AdminRepository;
 import com.app.dao.PropertyRepository;
+import com.app.dto.PropertyDetailsDTO;
 import com.app.pojos.User;
-
 @Service
 @Transactional
 public class AdminServiceImpl implements IAdminService {
@@ -25,12 +25,13 @@ public class AdminServiceImpl implements IAdminService {
 	}
 
 	@Override
-	public String deletePropertyById(Long propId) throws ResourceNotFoundException {
+	public String deletePropertyById(int propId) throws ResourceNotFoundException {
 		boolean exists=propRepo.existsById(propId);
 		if(!exists)
 			 throw new ResourceNotFoundException("wrong property data");
 		      propRepo.deleteById(propId); 
 		return "property is deleted with id"+propId;
 	}
+
 
 }

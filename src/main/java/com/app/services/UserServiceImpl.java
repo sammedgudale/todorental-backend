@@ -42,11 +42,11 @@ public class UserServiceImpl implements IUserService {
 	}
 	
 	@Override
-	public  User updateProfile(Long userid, UpdateDTO user) throws ResourceNotFoundException {
-		    boolean exists=userRepo.existsById((long) userid);
+	public  User updateProfile(int userid, UpdateDTO user) throws ResourceNotFoundException {
+		    boolean exists=userRepo.existsById(userid);
 		     if(!exists)
 		    	 throw new ResourceNotFoundException("Invalid user id!!!!!");
-		         User userDetails=userRepo.findById((long) userid).get();
+		         User userDetails=userRepo.findById(userid).get();
 		         BeanUtils.copyProperties(user, userDetails);
 		         return userDetails;
 	}
@@ -57,12 +57,12 @@ public class UserServiceImpl implements IUserService {
 	}
 
 	@Override
-	public FacilityDetailsDTO getPropertyFacilities(Long propid) {
+	public FacilityDetailsDTO getPropertyFacilities(int propid) {
 		 return propRepo.getFacilityDetails(propid);
 	}
 
 	@Override
-	public User profilePage(Long userid,Role role) {
+	public User profilePage(int userid,Role role) {
 	      return userRepo.profilePage(userid, role);
 	}
 

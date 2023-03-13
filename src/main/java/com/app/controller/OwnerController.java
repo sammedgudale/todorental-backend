@@ -1,12 +1,16 @@
 package com.app.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.app.dto.ResponseDTO;
@@ -16,7 +20,7 @@ import com.app.services.IOwnerService;
 
 @RestController
 @RequestMapping("/owner")
-@CrossOrigin
+@CrossOrigin("http://localhost:3000")
 public class OwnerController {
 
 	@Autowired
@@ -27,14 +31,17 @@ public class OwnerController {
 		System.out.println("in ctor :-" + getClass().getName());
 	}
 
-	@PostMapping("/property")
-	public ResponseDTO<?> addProperty(@RequestBody PropertyDetails request) {
-		return new ResponseDTO<>(HttpStatus.OK, "Fetching user list successfully", ownerService.addProperty(request));
-	}
+    @PostMapping("/property")
+    public ResponseDTO<?> addProperty(@RequestBody PropertyDetails request)
+    {
+ 	   return new ResponseDTO<>(HttpStatus.OK, "Fetching user list successfully", ownerService.addProperty(request));
+    }
 
 	@PostMapping("/addfacilities")
 	public ResponseDTO<?> addFacility(@RequestBody Facilities request) {
+		
 		return new ResponseDTO<>(HttpStatus.OK, "Fetching user list successfully", ownerService.addFacilities(request));
 	}
+	
 
 }
