@@ -27,8 +27,6 @@ public class User{
     @Enumerated(EnumType.STRING)
     private Role role;
     private String adharCard;
-     @Column(name="account_num")
-    private String accountNum;
      @Lob
      @JsonIgnore
     private byte[] photo;
@@ -43,7 +41,7 @@ public class User{
     	
     }
 	public User(String name, String email, String password, String contactNo, String address, Role role,
-			String accountNum,String adharCard) {
+			String adharCard) {
 		super();
 		this.name = name;
 		this.email = email;
@@ -51,7 +49,6 @@ public class User{
 		this.contactNo = contactNo;
 		this.address = address;
 		this.role = role;
-		this.accountNum = accountNum;
 		this.adharCard=adharCard;
 	}
 
@@ -119,13 +116,6 @@ public class User{
 		this.adharCard = adharCard;
 	}
 
-	public String getAccountNum() {
-		return accountNum;
-	}
-
-	public void setAccountNum(String accountNum) {
-		this.accountNum = accountNum;
-	}
 
 	public byte[] getPhoto() {
 		return photo;
@@ -144,7 +134,7 @@ public class User{
 	@Override
 	public String toString() {
 		return "Users [id=" + id + ", name=" + name + ", email=" + email + ", password=" + password + ", contactNo="
-				+ contactNo + ", address=" + address + ", role=" + role + ",  accountNum=" + accountNum + "]";
+				+ contactNo + ", address=" + address + ", role=" + role + "]";
 	}
     
 }

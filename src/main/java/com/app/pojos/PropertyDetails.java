@@ -40,6 +40,7 @@ public class PropertyDetails<SeekerFavList> {
 	@JsonIgnoreProperties("facilityData")
 	//@JsonIgnore
 	   List<Facilities>facilityList=new ArrayList<>();
+
 	//@OneToMany(mappedBy = "propList",cascade = CascadeType.ALL,orphanRemoval = true)
 	//@JsonIgnoreProperties("propList")
 	//  private SeekerFavList favData;
@@ -48,6 +49,7 @@ public class PropertyDetails<SeekerFavList> {
      {
     	 
      }
+
 
 	
 	
@@ -147,20 +149,7 @@ public class PropertyDetails<SeekerFavList> {
 		this.facilityList = facilityList;
 	}
 	
-	
 
-	/*public SeekerFavList getFavData() {
-		return favData;
-	}
-
-	public void setFavData(SeekerFavList favData) {
-		this.favData = favData;
-	}
-
-	public void setPropertyType(Type propertyType) {
-		this.propertyType = propertyType;
-	}
-*/
 	@Override
 	public String toString() {
 		return "PropertyDetails [id=" + id + ", address=" + address + ", rent=" + rent + ", status=" + status
